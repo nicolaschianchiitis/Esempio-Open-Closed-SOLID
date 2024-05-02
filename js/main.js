@@ -148,7 +148,7 @@ class Edicola {
 
     toString() {
         let contenutoVetrina = "Contenuto della vetrina: {";
-        for (const prodotto in this.#vetrinaProdotti) {
+        for (var prodotto in this.#vetrinaProdotti) {
             contenutoVetrina += "\n" + prodotto;
         }
         contenutoVetrina += "\n}";
@@ -156,9 +156,10 @@ class Edicola {
     }
 
     compraProdotto(nomeProdotto, numPezzi) {
-        for (const prodotto in this.#vetrinaProdotti) {
-            if (prodotto.nome == nomeProdotto){
-                prodotto.compra(numPezzi);
+        for (let i = 0; i < this.#vetrinaProdotti.length; i++) {
+            if (this.#vetrinaProdotti[i].nome == nomeProdotto){
+                console.log("OK")
+                this.#vetrinaProdotti[i].compra(numPezzi);
                 break;
             }
         }
@@ -188,13 +189,13 @@ function main() {
 
     const pOutput = document.getElementById("output");
 
-    pOutput.innerText = `${edicola}`;
+    pOutput.innerText = `${edicola.vetrinaProdotti}`;
 
     edicola.compraProdotto("Gazzetta di Parma", 2);
     edicola.compraProdotto("Computer Idea", 5);
 
     pOutput.innerText += `\nHo comprato: 2 "Gazzette di Parma"; 5 riviste "Computer Idea"`
-        + ` e un libro "Anime Scalze"...\n\n${edicola}\n\nNella console ==> Sto sfogliando il giornale...\n`;
+        + ` e un libro "Anime Scalze"...\n\n${edicola.vetrinaProdotti}\n\nNella console ==> Sto sfogliando il giornale...\n`;
 }
 
 function mostraCodice() {
@@ -353,7 +354,7 @@ function mostraCodice() {
     
         toString() {
             let contenutoVetrina = "Contenuto della vetrina: {";
-            for (const prodotto in this.#vetrinaProdotti) {
+            for (var prodotto in this.#vetrinaProdotti) {
                 contenutoVetrina += "\n" + prodotto;
             }
             contenutoVetrina += "\n}";
@@ -361,9 +362,10 @@ function mostraCodice() {
         }
     
         compraProdotto(nomeProdotto, numPezzi) {
-            for (const prodotto in this.#vetrinaProdotti) {
-                if (prodotto.nome == nomeProdotto){
-                    prodotto.compra(numPezzi);
+            for (let i = 0; i < this.#vetrinaProdotti.length; i++) {
+                if (this.#vetrinaProdotti[i].nome == nomeProdotto){
+                    console.log("OK")
+                    this.#vetrinaProdotti[i].compra(numPezzi);
                     break;
                 }
             }
@@ -392,14 +394,14 @@ function mostraCodice() {
         );
     
         const pOutput = document.getElementById("output");
-    
-        pOutput.innerText = \`\${edicola}\`;
-    
+
+        pOutput.innerText = \`\${edicola.vetrinaProdotti}\`;
+
         edicola.compraProdotto("Gazzetta di Parma", 2);
         edicola.compraProdotto("Computer Idea", 5);
-    
+
         pOutput.innerText += \`\nHo comprato: 2 "Gazzette di Parma"; 5 riviste "Computer Idea"\`
-        + \` e un libro "Anime Scalze"...\n\n\${edicola}\n\nNella console ==> Sto sfogliando il giornale...\n\`;
+            + \` e un libro "Anime Scalze"...\n\n\${edicola.vetrinaProdotti}\n\nNella console ==> Sto sfogliando il giornale...\n\`;
     }
     
     function mostraCodice() {
